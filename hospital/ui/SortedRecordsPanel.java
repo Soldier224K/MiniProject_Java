@@ -36,8 +36,8 @@ public class SortedRecordsPanel extends JPanel {
     private void initComponents() {
         // Top Header
         add(UIConstants.createHeaderBanner(
-            "Sorted Patient Records & Data Structures Architecture (TreeMap)",
-            "Explore logarithmic O(log N) ordered trees, custom sorting, and hospital data structure mapping"
+            "Sorted Patient Records",
+            "Explore and filter patient records using custom sorting"
         ), BorderLayout.NORTH);
 
         JPanel content = new JPanel(new BorderLayout(16, 16));
@@ -50,12 +50,12 @@ public class SortedRecordsPanel extends JPanel {
         JPanel controlRow = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 0));
         controlRow.setOpaque(false);
 
-        JLabel lblSelect = new JLabel("Select Sort Criterion (TreeMap & Comparator):");
+        JLabel lblSelect = new JLabel("Select Sort Criterion:");
         lblSelect.setFont(UIConstants.FONT_BODY_BOLD);
 
         cmbSortCriteria = new JComboBox<>(new String[]{
-            "Alphabetical by Patient Name (TreeMap Case-Insensitive)",
-            "Natural Order by Patient ID (TreeMap Red-Black Tree)",
+            "Alphabetical by Patient Name",
+            "Natural Order by Patient ID",
             "Youngest to Oldest (Age Ascending)",
             "Oldest to Youngest (Age Descending)",
             "Most Recent Registrations First (Date Descending)"
@@ -97,37 +97,7 @@ public class SortedRecordsPanel extends JPanel {
 
         content.add(tableCard, BorderLayout.CENTER);
 
-        // --- BOTTOM: DATA STRUCTURES COMPARISON CARD ---
-        JPanel dsCard = UIConstants.createCardPanel();
-        dsCard.setLayout(new BorderLayout(8, 8));
 
-        JLabel lblDsTitle = new JLabel("Data Structure Selection & Academic Mapping Summary");
-        lblDsTitle.setFont(UIConstants.FONT_HEADER);
-        lblDsTitle.setForeground(UIConstants.TEXT_MAIN);
-
-        String[] dsCols = {"Data Structure", "Hospital Usage in System", "Time Complexity", "Key Justification"};
-        String[][] dsData = {
-            {"Arrays (T[])", "Blood Groups, Departments, Room Types, Recent ID Buffer", "O(1) index, O(N) search", "Fixed categories & fast direct indexing memory layout"},
-            {"LinkedList<T>", "Appointments Queue, Patient Clinical Records History", "O(1) insert/delete, O(N) traversal", "Sequential consultations, dynamic FIFO queue ordering"},
-            {"HashMap<K, V>", "Patient ID Lookup, Doctor & Billing Invoicing", "O(1) average lookup/insert", "Instant instantaneous patient search by Unique ID"},
-            {"TreeMap<K, V>", "Alphabetical Patient Directory & ID Indexing", "O(log N) guaranteed sort", "Red-Black Tree ensures balanced in-order traversal"}
-        };
-
-        DefaultTableModel dsModel = new DefaultTableModel(dsData, dsCols) {
-            @Override
-            public boolean isCellEditable(int r, int c) { return false; }
-        };
-        JTable dsTable = new JTable(dsModel);
-        UIConstants.styleTable(dsTable);
-        dsTable.setPreferredScrollableViewportSize(new Dimension(800, 100));
-
-        JScrollPane dsScroll = new JScrollPane(dsTable);
-        dsScroll.setBorder(BorderFactory.createLineBorder(UIConstants.BORDER));
-
-        dsCard.add(lblDsTitle, BorderLayout.NORTH);
-        dsCard.add(dsScroll, BorderLayout.CENTER);
-
-        content.add(dsCard, BorderLayout.SOUTH);
 
         add(content, BorderLayout.CENTER);
     }
@@ -138,26 +108,24 @@ public class SortedRecordsPanel extends JPanel {
 
         switch (index) {
             case 0:
-                // Sorted by Name via TreeMap
                 list = service.getPatientsSortedByName();
-                lblSortExplanation.setText("✓ Using TreeMap<String, Patient> (Case-Insensitive Red-Black Tree) sorted by Patient Name.");
+                lblSortExplanation.setText("Sorted alphabetically by Patient Name.");
                 break;
             case 1:
-                // Sorted by ID via TreeMap
                 list = service.getPatientsSortedById();
-                lblSortExplanation.setText("✓ Using TreeMap<String, Patient> sorted naturally by Unique Patient ID (PAT-xxxx).");
+                lblSortExplanation.setText("Sorted naturally by Unique Patient ID.");
                 break;
             case 2:
                 list = service.getPatientsSortedByAge(true);
-                lblSortExplanation.setText("✓ Sorted dynamically by Age (Ascending: Youngest to Oldest).");
+                lblSortExplanation.setText("Sorted dynamically by Age (Ascending: Youngest to Oldest).");
                 break;
             case 3:
                 list = service.getPatientsSortedByAge(false);
-                lblSortExplanation.setText("✓ Sorted dynamically by Age (Descending: Senior citizens first).");
+                lblSortExplanation.setText("Sorted dynamically by Age (Descending: Senior citizens first).");
                 break;
             case 4:
                 list = service.getPatientsSortedByRegistrationDate(true);
-                lblSortExplanation.setText("✓ Sorted by Registration Date (Most recent admissions first).");
+                lblSortExplanation.setText("Sorted by Registration Date (Most recent admissions first).");
                 break;
             default:
                 list = service.getPatientsSortedByName();

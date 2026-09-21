@@ -200,6 +200,6 @@ public class BillingRecord {
 
     @Override
     public String toString() {
-        return billId + " - Patient: " + patientName + " Total: $" + String.format("%.2f", totalAmount) + " [" + paymentStatus + "]";
+        return billId + " - Patient: " + patientName + " Total: ₹" + String.format("%.2f", totalAmount) + " [" + paymentStatus + "]";
     }
 }

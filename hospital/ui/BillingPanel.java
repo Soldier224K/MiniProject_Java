@@ -77,7 +77,7 @@ public class BillingPanel extends JPanel {
         cmbPatient = new JComboBox<>();
         cmbPatient.setFont(UIConstants.FONT_BODY);
 
-        txtConsultFee = new JTextField("100.00");
+        txtConsultFee = new JTextField("1000.00");
         txtLabFee = new JTextField("0.00");
         txtMedicineFee = new JTextField("0.00");
         txtRoomFee = new JTextField("0.00");
@@ -104,7 +104,7 @@ public class BillingPanel extends JPanel {
         txtTaxPercent.addKeyListener(calcListener);
         txtDiscount.addKeyListener(calcListener);
 
-        lblCalculatedTotal = new JLabel("$105.00");
+        lblCalculatedTotal = new JLabel("₹1050.00");
         lblCalculatedTotal.setFont(new Font("Segoe UI", Font.BOLD, 18));
         lblCalculatedTotal.setForeground(UIConstants.SUCCESS);
 
@@ -117,14 +117,14 @@ public class BillingPanel extends JPanel {
 
         int row = 0;
         addFormRow(formGrid, gbc, row++, "Patient *:", cmbPatient);
-        addFormRow(formGrid, gbc, row++, "Doctor Consultation ($):", txtConsultFee);
-        addFormRow(formGrid, gbc, row++, "Lab / Diagnostic ($):", txtLabFee);
-        addFormRow(formGrid, gbc, row++, "Pharmacy / Meds ($):", txtMedicineFee);
-        addFormRow(formGrid, gbc, row++, "Room / Ward Charges ($):", txtRoomFee);
+        addFormRow(formGrid, gbc, row++, "Doctor Consultation (₹):", txtConsultFee);
+        addFormRow(formGrid, gbc, row++, "Lab / Diagnostic (₹):", txtLabFee);
+        addFormRow(formGrid, gbc, row++, "Pharmacy / Meds (₹):", txtMedicineFee);
+        addFormRow(formGrid, gbc, row++, "Room / Ward Charges (₹):", txtRoomFee);
         addFormRow(formGrid, gbc, row++, "Tax Rate (%):", txtTaxPercent);
-        addFormRow(formGrid, gbc, row++, "Discount ($):", txtDiscount);
+        addFormRow(formGrid, gbc, row++, "Discount (₹):", txtDiscount);
         addFormRow(formGrid, gbc, row++, "Net Payable Total:", lblCalculatedTotal);
-        addFormRow(formGrid, gbc, row++, "Payment Method (Array):", cmbPaymentMethod);
+        addFormRow(formGrid, gbc, row++, "Payment Method:", cmbPaymentMethod);
         addFormRow(formGrid, gbc, row++, "Payment Status:", cmbPaymentStatus);
 
         formCard.add(formGrid, BorderLayout.CENTER);
@@ -176,7 +176,7 @@ public class BillingPanel extends JPanel {
         rightCard.add(toolBar, BorderLayout.NORTH);
 
         // Table
-        String[] cols = {"Bill ID", "Patient Name", "Consult Fee", "Lab Fee", "Meds Fee", "Total ($)", "Status", "Date"};
+        String[] cols = {"Bill ID", "Patient Name", "Consult Fee", "Lab Fee", "Meds Fee", "Total (₹)", "Status", "Date"};
         tableModel = new DefaultTableModel(cols, 0) {
             @Override
             public boolean isCellEditable(int row, int col) { return false; }
@@ -221,9 +221,9 @@ public class BillingPanel extends JPanel {
             double taxAmt = sub * (tax / 100.0);
             double total = Math.max(0.0, (sub + taxAmt) - disc);
 
-            lblCalculatedTotal.setText(String.format("$%.2f", total));
+            lblCalculatedTotal.setText(String.format("₹%.2f", total));
         } catch (Exception ignored) {
-            lblCalculatedTotal.setText("$0.00");
+            lblCalculatedTotal.setText("₹0.00");
         }
     }
 
@@ -252,10 +252,10 @@ public class BillingPanel extends JPanel {
                 tableModel.addRow(new Object[]{
                     b.getBillId(),
                     b.getPatientName() + " (" + b.getPatientId() + ")",
-                    String.format("$%.2f", b.getConsultationFee()),
-                    String.format("$%.2f", b.getLabCharges()),
-                    String.format("$%.2f", b.getMedicineCharges()),
-                    String.format("$%.2f", b.getTotalAmount()),
+                    String.format("₹%.2f", b.getConsultationFee()),
+                    String.format("₹%.2f", b.getLabCharges()),
+                    String.format("₹%.2f", b.getMedicineCharges()),
+                    String.format("₹%.2f", b.getTotalAmount()),
                     b.getPaymentStatus(),
                     b.getBillingDate()
                 });
@@ -296,7 +296,7 @@ public class BillingPanel extends JPanel {
         mainFrame.refreshDashboard();
 
         JOptionPane.showMessageDialog(this,
-            "Invoice " + billId + " for $" + String.format("%.2f", bill.getTotalAmount()) + " generated successfully!",
+            "Invoice " + billId + " for ₹" + String.format("%.2f", bill.getTotalAmount()) + " generated successfully!",
             "Invoice Created", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -329,7 +329,7 @@ public class BillingPanel extends JPanel {
                 service.updateBillPaymentStatus(billId, "Paid", method);
                 loadBills();
                 mainFrame.refreshDashboard();
-                JOptionPane.showMessageDialog(this, "Payment of $" + String.format("%.2f", b.getTotalAmount()) + " confirmed via " + method + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Payment of ₹" + String.format("%.2f", b.getTotalAmount()) + " confirmed via " + method + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
@@ -358,7 +358,7 @@ public class BillingPanel extends JPanel {
             sb.append(String.format("Contact Phone : %-20s Blood: %s\n", p.getContactNumber(), p.getBloodGroup()));
         }
         sb.append("--------------------------------------------------------\n");
-        sb.append(String.format("  %-35s  %12s\n", "ITEM / SERVICE DESCRIPTION", "AMOUNT ($)"));
+        sb.append(String.format("  %-35s  %12s\n", "ITEM / SERVICE DESCRIPTION", "AMOUNT (₹)"));
         sb.append("--------------------------------------------------------\n");
         sb.append(String.format("  %-35s  %12.2f\n", "1. Physician Consultation Charge", b.getConsultationFee()));
         sb.append(String.format("  %-35s  %12.2f\n", "2. Clinical Laboratory & Diagnostics", b.getLabCharges()));

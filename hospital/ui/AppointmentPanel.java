@@ -91,7 +91,7 @@ public class AppointmentPanel extends JPanel {
         int row = 0;
         addFormRow(formGrid, gbc, row++, "Select Patient *:", cmbPatients);
         addFormRow(formGrid, gbc, row++, "Assign Doctor *:", cmbDoctors);
-        addFormRow(formGrid, gbc, row++, "Time Slot (Array):", cmbTimeSlots);
+        addFormRow(formGrid, gbc, row++, "Time Slot:", cmbTimeSlots);
         addFormRow(formGrid, gbc, row++, "Days from Today:", txtDaysOffset);
         addFormRow(formGrid, gbc, row++, "Visit Reason / Chief Complaint:", txtReason);
 

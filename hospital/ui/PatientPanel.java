@@ -123,7 +123,7 @@ public class PatientPanel extends JPanel {
         addFormRow(formGrid, gbc, row++, "Full Name *:", txtName);
         addFormRow(formGrid, gbc, row++, "Age *:", txtAge);
         addFormRow(formGrid, gbc, row++, "Gender *:", cmbGender);
-        addFormRow(formGrid, gbc, row++, "Blood Group (Array):", cmbBloodGroup);
+        addFormRow(formGrid, gbc, row++, "Blood Group:", cmbBloodGroup);
         addFormRow(formGrid, gbc, row++, "Contact Phone *:", txtContact);
         addFormRow(formGrid, gbc, row++, "Emergency Contact:", txtEmergencyContact);
         addFormRow(formGrid, gbc, row++, "Blood Pressure:", txtBloodPressure);
@@ -159,7 +159,7 @@ public class PatientPanel extends JPanel {
         JPanel searchInputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         searchInputPanel.setOpaque(false);
 
-        JLabel lblSearch = new JLabel("Fast Search (HashMap O(1) / Filter):");
+        JLabel lblSearch = new JLabel("Fast Search:");
         lblSearch.setFont(UIConstants.FONT_BODY_BOLD);
 
         txtSearch = new JTextField(18);
@@ -345,7 +345,7 @@ public class PatientPanel extends JPanel {
         String patientName = (String) tableModel.getValueAt(selectedRow, 1);
 
         int confirm = JOptionPane.showConfirmDialog(this,
-            "Are you sure you want to delete patient: " + patientName + " (" + patientId + ")?\nThis will remove them from HashMap & TreeMaps.",
+            "Are you sure you want to delete patient: " + patientName + " (" + patientId + ")?\nThis will permanently remove their records.",
             "Confirm Patient Deletion",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
@@ -418,7 +418,7 @@ public class PatientPanel extends JPanel {
         sb.append("Known Allergies  : ").append(patient.getAllergies()).append("\n");
         sb.append("Address          : ").append(patient.getAddress()).append("\n\n");
 
-        sb.append("─── APPOINTMENT HISTORY (From LinkedList) ───\n");
+        sb.append("─── APPOINTMENT HISTORY ───\n");
         if (apts.isEmpty()) {
             sb.append("  No appointment history recorded.\n");
         } else {
@@ -429,7 +429,7 @@ public class PatientPanel extends JPanel {
             }
         }
 
-        sb.append("\n─── CLINICAL MEDICAL RECORDS (From LinkedList) ───\n");
+        sb.append("\n─── CLINICAL MEDICAL RECORDS ───\n");
         if (recs.isEmpty()) {
             sb.append("  No clinical records recorded.\n");
         } else {

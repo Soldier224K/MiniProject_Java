@@ -485,12 +485,12 @@ public class HospitalService {
 
     private void seedInitialData() {
         // 1. Doctors
-        Doctor d1 = new Doctor("DOC-201", "Dr. Rajesh Sharma", "Cardiology", "MD, DM (Cardiology)", "+91-98765-43210", "dr.rajesh@hospital.com", 120.0, "Room 101", "Mon, Wed, Fri");
-        Doctor d2 = new Doctor("DOC-202", "Dr. Ananya Iyer", "Neurology", "MBBS, M.Ch (Neuro)", "+91-98765-43211", "dr.ananya@hospital.com", 150.0, "Room 102", "Tue, Thu, Sat");
-        Doctor d3 = new Doctor("DOC-203", "Dr. Vikram Malhotra", "Orthopedics", "MS (Orthopedics)", "+91-98765-43212", "dr.vikram@hospital.com", 100.0, "Room 201", "Mon, Tue, Thu");
-        Doctor d4 = new Doctor("DOC-204", "Dr. Priya Deshmukh", "Pediatrics", "MD (Pediatrics)", "+91-98765-43213", "dr.priya@hospital.com", 90.0, "Room 205", "Daily (Mon-Sat)");
-        Doctor d5 = new Doctor("DOC-205", "Dr. Amit Patel", "General Medicine", "MBBS, MD (Medicine)", "+91-98765-43214", "dr.amit@hospital.com", 80.0, "Room 104", "Daily (Mon-Sun)");
-        Doctor d6 = new Doctor("DOC-206", "Dr. Sunita Sen", "Dermatology", "MD (Dermatology)", "+91-98765-43215", "dr.sunita@hospital.com", 110.0, "Room 302", "Wed, Fri, Sat");
+        Doctor d1 = new Doctor("DOC-201", "Dr. Rajesh Sharma", "Cardiology", "MD, DM (Cardiology)", "+91-98765-43210", "dr.rajesh@hospital.com", 1200.0, "Room 101", "Mon, Wed, Fri");
+        Doctor d2 = new Doctor("DOC-202", "Dr. Ananya Iyer", "Neurology", "MBBS, M.Ch (Neuro)", "+91-98765-43211", "dr.ananya@hospital.com", 1500.0, "Room 102", "Tue, Thu, Sat");
+        Doctor d3 = new Doctor("DOC-203", "Dr. Vikram Malhotra", "Orthopedics", "MS (Orthopedics)", "+91-98765-43212", "dr.vikram@hospital.com", 1000.0, "Room 201", "Mon, Tue, Thu");
+        Doctor d4 = new Doctor("DOC-204", "Dr. Priya Deshmukh", "Pediatrics", "MD (Pediatrics)", "+91-98765-43213", "dr.priya@hospital.com", 900.0, "Room 205", "Daily (Mon-Sat)");
+        Doctor d5 = new Doctor("DOC-205", "Dr. Amit Patel", "General Medicine", "MBBS, MD (Medicine)", "+91-98765-43214", "dr.amit@hospital.com", 800.0, "Room 104", "Daily (Mon-Sun)");
+        Doctor d6 = new Doctor("DOC-206", "Dr. Sunita Sen", "Dermatology", "MD (Dermatology)", "+91-98765-43215", "dr.sunita@hospital.com", 1100.0, "Room 302", "Wed, Fri, Sat");
 
         addDoctor(d1);
         addDoctor(d2);
@@ -539,9 +539,9 @@ public class HospitalService {
         addMedicalRecord(mr3);
 
         // 5. Billing Records
-        BillingRecord b1 = new BillingRecord("INV-9001", "PAT-1001", "Aarav Gupta", "APT-5001", 80.0, 35.0, 25.0, 0.0, 5.0, 10.0, "Paid", "UPI / Net Banking", LocalDate.now().minusDays(15));
-        BillingRecord b2 = new BillingRecord("INV-9002", "PAT-1003", "Rohan Mehta", "APT-5002", 120.0, 95.0, 45.0, 0.0, 5.0, 0.0, "Pending", "None", LocalDate.now());
-        BillingRecord b3 = new BillingRecord("INV-9003", "PAT-1005", "Devendra Joshi", "APT-5005", 100.0, 60.0, 40.0, 0.0, 5.0, 15.0, "Paid", "Credit Card", LocalDate.now().minusDays(3));
+        BillingRecord b1 = new BillingRecord("INV-9001", "PAT-1001", "Aarav Gupta", "APT-5001", 800.0, 350.0, 250.0, 0.0, 5.0, 100.0, "Paid", "UPI / Net Banking", LocalDate.now().minusDays(15));
+        BillingRecord b2 = new BillingRecord("INV-9002", "PAT-1003", "Rohan Mehta", "APT-5002", 1200.0, 950.0, 450.0, 0.0, 5.0, 0.0, "Pending", "None", LocalDate.now());
+        BillingRecord b3 = new BillingRecord("INV-9003", "PAT-1005", "Devendra Joshi", "APT-5005", 1000.0, 600.0, 400.0, 0.0, 5.0, 150.0, "Paid", "Credit Card", LocalDate.now().minusDays(3));
 
         addBillingRecord(b1);
         addBillingRecord(b2);

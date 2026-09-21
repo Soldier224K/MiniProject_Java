@@ -26,7 +26,7 @@ public class HospitalSystemTest {
             assert service.getDoctorCount() >= 6 : "Expected at least 6 initial doctors";
             assert service.getAppointmentCount() >= 5 : "Expected at least 5 appointments";
             assert service.getMedicalRecordCount() >= 3 : "Expected at least 3 medical records";
-            System.out.println("✓ Test 1 Passed: Initial seed data loaded correctly.");
+            System.out.println("Test 1 Passed: Initial seed data loaded correctly.");
             passed++;
         } catch (AssertionError e) {
             System.err.println("✗ Test 1 Failed: " + e.getMessage());
@@ -42,7 +42,7 @@ public class HospitalSystemTest {
 
             Patient nonExistent = service.getPatientById("PAT-9999");
             assert nonExistent == null : "Non-existent patient should return null";
-            System.out.println("✓ Test 2 Passed: HashMap O(1) ID search functioning as expected.");
+            System.out.println("Test 2 Passed: HashMap O(1) ID search functioning as expected.");
             passed++;
         } catch (AssertionError e) {
             System.err.println("✗ Test 2 Failed: " + e.getMessage());
@@ -57,7 +57,7 @@ public class HospitalSystemTest {
             String[] recentIds = service.getRecentPatientIdsArray();
             assert recentIds.length == 5 : "Recent IDs array buffer size must be 5";
             assert recentIds[0] != null : "Most recent patient slot 0 must not be null";
-            System.out.println("✓ Test 3 Passed: Arrays for metadata & fixed circular buffer working.");
+            System.out.println("Test 3 Passed: Arrays for metadata & fixed circular buffer working.");
             passed++;
         } catch (AssertionError e) {
             System.err.println("✗ Test 3 Failed: " + e.getMessage());
@@ -82,7 +82,7 @@ public class HospitalSystemTest {
                 }
             }
             assert updated != null && "Completed".equals(updated.getStatus()) : "Appointment status update failed";
-            System.out.println("✓ Test 4 Passed: LinkedList FIFO queue and status update working.");
+            System.out.println("Test 4 Passed: LinkedList FIFO queue and status update working.");
             passed++;
         } catch (AssertionError e) {
             System.err.println("✗ Test 4 Failed: " + e.getMessage());
@@ -105,7 +105,7 @@ public class HospitalSystemTest {
                 String id2 = sortedById.get(i + 1).getId();
                 assert id1.compareTo(id2) <= 0 : "Patients must be sorted by ID in TreeMap";
             }
-            System.out.println("✓ Test 5 Passed: TreeMap sorted natural order and name order verified.");
+            System.out.println("Test 5 Passed: TreeMap sorted natural order and name order verified.");
             passed++;
         } catch (AssertionError e) {
             System.err.println("✗ Test 5 Failed: " + e.getMessage());
@@ -115,11 +115,11 @@ public class HospitalSystemTest {
         // Test 6: Billing Calculation & HashMap Retrieval
         try {
             BillingRecord bill = new BillingRecord(
-                "INV-TEST", "PAT-1001", "Aarav Gupta", "APT-5001",
-                100.0, 50.0, 50.0, 0.0, 5.0, 10.0, "Pending", "Cash", LocalDate.now()
+                    "INV-TEST", "PAT-TEST", "Test Patient", "APT-TEST",
+                    1000.0, 500.0, 500.0, 0.0, 5.0, 100.0,
+                    "Pending", "None", LocalDate.now()
             );
-            // Subtotal = 200, Tax (5%) = 10, Total = 210 - 10 (Discount) = 200.0
-            assert Math.abs(bill.getTotalAmount() - 200.0) < 0.001 : "Billing calculation mismatch: expected 200.0, got " + bill.getTotalAmount();
+            assert Math.abs(bill.getTotalAmount() - 2000.0) < 0.001 : "Billing calculation mismatch: expected 2000.0, got " + bill.getTotalAmount();
 
             service.addBillingRecord(bill);
             BillingRecord retrieved = service.getBillById("INV-TEST");
@@ -128,7 +128,7 @@ public class HospitalSystemTest {
             service.updateBillPaymentStatus("INV-TEST", "Paid", "Credit Card");
             assert "Paid".equals(retrieved.getPaymentStatus()) : "Payment status should be Paid";
             assert "Credit Card".equals(retrieved.getPaymentMethod()) : "Payment method should be Credit Card";
-            System.out.println("✓ Test 6 Passed: Billing calculations, tax, discount & HashMap lookup verified.");
+            System.out.println("Test 6 Passed: Billing calculations, tax, discount & HashMap lookup verified.");
             passed++;
         } catch (AssertionError e) {
             System.err.println("✗ Test 6 Failed: " + e.getMessage());
@@ -148,7 +148,7 @@ public class HospitalSystemTest {
 
             service.deletePatient(tempId);
             assert service.getPatientById(tempId) == null : "Patient should be deleted from HashMap";
-            System.out.println("✓ Test 7 Passed: Patient CRUD (Add, Update, Delete) across collections verified.");
+            System.out.println("Test 7 Passed: Patient CRUD (Add, Update, Delete) across collections verified.");
             passed++;
         } catch (AssertionError e) {
             System.err.println("✗ Test 7 Failed: " + e.getMessage());

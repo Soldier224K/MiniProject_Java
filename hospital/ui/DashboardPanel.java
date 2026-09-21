@@ -58,11 +58,11 @@ public class DashboardPanel extends JPanel {
         lblTotalPatients = new JLabel("0");
         lblTotalDoctors = new JLabel("0");
         lblTodayAppointments = new JLabel("0");
-        lblPendingBills = new JLabel("$0.00");
+        lblPendingBills = new JLabel("₹0.00");
 
-        kpiRow.add(createKpiCard("Registered Patients", lblTotalPatients, "Total Active in HashMap", UIConstants.PRIMARY, UIConstants.PRIMARY_LIGHT));
+        kpiRow.add(createKpiCard("Registered Patients", lblTotalPatients, "Total Active Patients", UIConstants.PRIMARY, UIConstants.PRIMARY_LIGHT));
         kpiRow.add(createKpiCard("Specialist Doctors", lblTotalDoctors, "Medical Staff on Roster", UIConstants.SUCCESS, UIConstants.SUCCESS_LIGHT));
-        kpiRow.add(createKpiCard("Today's Appointments", lblTodayAppointments, "Scheduled in LinkedList", UIConstants.PURPLE, UIConstants.PURPLE_LIGHT));
+        kpiRow.add(createKpiCard("Today's Appointments", lblTodayAppointments, "Scheduled Appointments", UIConstants.PURPLE, UIConstants.PURPLE_LIGHT));
         kpiRow.add(createKpiCard("Pending Invoices", lblPendingBills, "Outstanding Revenue", UIConstants.WARNING, UIConstants.WARNING_LIGHT));
 
         centerPanel.add(kpiRow);
@@ -83,7 +83,7 @@ public class DashboardPanel extends JPanel {
         JButton btnNewPatient = UIConstants.createPrimaryButton("+ Register New Patient");
         JButton btnBookApt = UIConstants.createButton("+ Schedule Appointment", UIConstants.PURPLE, Color.WHITE);
         JButton btnNewBill = UIConstants.createButton("+ Create Invoice", UIConstants.SUCCESS, Color.WHITE);
-        JButton btnSortedView = UIConstants.createSecondaryButton("View Sorted Directory (TreeMap)");
+        JButton btnSortedView = UIConstants.createSecondaryButton("View Sorted Directory");
 
         btnNewPatient.addActionListener(e -> mainFrame.navigateTo("Patients"));
         btnBookApt.addActionListener(e -> mainFrame.navigateTo("Appointments"));
@@ -108,7 +108,7 @@ public class DashboardPanel extends JPanel {
         // Left: Appointments
         JPanel leftCard = UIConstants.createCardPanel();
         leftCard.setLayout(new BorderLayout(10, 10));
-        JLabel lblLeft = new JLabel("Upcoming Appointments Queue (LinkedList)");
+        JLabel lblLeft = new JLabel("Upcoming Appointments Queue");
         lblLeft.setFont(UIConstants.FONT_SUBHEADER);
         lblLeft.setForeground(UIConstants.TEXT_MAIN);
         leftCard.add(lblLeft, BorderLayout.NORTH);
@@ -127,7 +127,7 @@ public class DashboardPanel extends JPanel {
         // Right: Recent Patients (Fixed Array Buffer)
         JPanel rightCard = UIConstants.createCardPanel();
         rightCard.setLayout(new BorderLayout(10, 10));
-        JLabel lblRight = new JLabel("Recently Registered Patient IDs (Fixed Array Buffer)");
+        JLabel lblRight = new JLabel("Recently Registered Patient IDs");
         lblRight.setFont(UIConstants.FONT_SUBHEADER);
         lblRight.setForeground(UIConstants.TEXT_MAIN);
         rightCard.add(lblRight, BorderLayout.NORTH);
@@ -177,7 +177,7 @@ public class DashboardPanel extends JPanel {
         lblTotalPatients.setText(String.valueOf(service.getPatientCount()));
         lblTotalDoctors.setText(String.valueOf(service.getDoctorCount()));
         lblTodayAppointments.setText(String.valueOf(service.getTodayAppointmentCount()));
-        lblPendingBills.setText("$" + String.format("%.2f", service.getPendingRevenue()));
+        lblPendingBills.setText("₹" + String.format("%.2f", service.getPendingRevenue()));
 
         // Populate Appointments from LinkedList
         appointmentTableModel.setRowCount(0);

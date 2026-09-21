@@ -104,20 +104,9 @@ public class MainFrame extends JFrame {
             "Sorted Records"
         };
 
-        String[] navIcons = {
-            "📊",
-            "👥",
-            "🩺",
-            "📅",
-            "📋",
-            "💳",
-            "🌲"
-        };
-
         for (int i = 0; i < navItems.length; i++) {
             String name = navItems[i];
-            String icon = navIcons[i];
-            JButton btn = createNavButton(icon + "  " + name, name);
+            JButton btn = createNavButton(name, name);
             navButtons.put(name, btn);
             menuPanel.add(btn);
             menuPanel.add(Box.createVerticalStrut(6));
@@ -125,17 +114,6 @@ public class MainFrame extends JFrame {
 
         sidebar.add(menuPanel, BorderLayout.CENTER);
 
-        // Sidebar Footer
-        JPanel footerPanel = new JPanel(new BorderLayout());
-        footerPanel.setOpaque(false);
-        footerPanel.setBorder(new EmptyBorder(16, 20, 16, 20));
-
-        JLabel lblVersion = new JLabel("Java DSA Project • v1.0");
-        lblVersion.setFont(UIConstants.FONT_SMALL);
-        lblVersion.setForeground(new Color(100, 116, 139));
-        footerPanel.add(lblVersion, BorderLayout.CENTER);
-
-        sidebar.add(footerPanel, BorderLayout.SOUTH);
 
         return sidebar;
     }

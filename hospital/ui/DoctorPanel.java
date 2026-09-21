@@ -49,7 +49,7 @@ public class DoctorPanel extends JPanel {
         JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
         filterPanel.setOpaque(false);
 
-        JLabel lblFilter = new JLabel("Filter by Specialization (Department Array):");
+        JLabel lblFilter = new JLabel("Filter by Specialization:");
         lblFilter.setFont(UIConstants.FONT_BODY_BOLD);
 
         String[] deptFilterOptions = new String[HospitalService.DEPARTMENTS.length + 1];
@@ -76,7 +76,7 @@ public class DoctorPanel extends JPanel {
         // Doctor Table
         String[] cols = {
             "Doctor ID", "Doctor Name", "Specialization", "Qualification",
-            "Consultation Fee ($)", "Room No", "Available Schedule", "Contact Phone"
+            "Consultation Fee (₹)", "Room No", "Available Schedule", "Contact Phone"
         };
         tableModel = new DefaultTableModel(cols, 0) {
             @Override
@@ -101,7 +101,7 @@ public class DoctorPanel extends JPanel {
                 d.getName(),
                 d.getSpecialization(),
                 d.getQualification(),
-                String.format("$%.2f", d.getConsultationFee()),
+                String.format("₹%.2f", d.getConsultationFee()),
                 d.getRoomNumber(),
                 d.getAvailableDays(),
                 d.getContactNumber()
@@ -130,7 +130,7 @@ public class DoctorPanel extends JPanel {
         JTextField txtQual = new JTextField("MBBS, MD");
         JTextField txtPhone = new JTextField();
         JTextField txtEmail = new JTextField();
-        JTextField txtFee = new JTextField("100.00");
+        JTextField txtFee = new JTextField("1000.00");
         JTextField txtRoom = new JTextField("Room 101");
         JTextField txtDays = new JTextField("Mon, Wed, Fri");
 
@@ -141,7 +141,7 @@ public class DoctorPanel extends JPanel {
         addDialogRow(content, gbc, row++, "Qualification:", txtQual);
         addDialogRow(content, gbc, row++, "Contact Phone *:", txtPhone);
         addDialogRow(content, gbc, row++, "Email Address:", txtEmail);
-        addDialogRow(content, gbc, row++, "Consultation Fee ($):", txtFee);
+        addDialogRow(content, gbc, row++, "Consultation Fee (₹):", txtFee);
         addDialogRow(content, gbc, row++, "Room No:", txtRoom);
         addDialogRow(content, gbc, row++, "Available Schedule:", txtDays);
 
@@ -160,7 +160,7 @@ public class DoctorPanel extends JPanel {
                 return;
             }
 
-            double fee = 100.0;
+            double fee = 1000.0;
             try {
                 fee = Double.parseDouble(feeStr);
             } catch (NumberFormatException ex) {
