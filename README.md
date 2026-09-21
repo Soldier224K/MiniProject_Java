@@ -65,7 +65,7 @@ Run the launch script from the project root:
 ```bash
 mkdir -p bin
 javac -d bin $(find src -name "*.java")
-java -cp bin com.hospital.Main
+java -cp bin hospital.Main
 ```
 
 ### 2. Run Automated Verification Tests

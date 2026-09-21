@@ -1,7 +1,7 @@
-package com.hospital.ui;
+package hospital.ui;
 
-import com.hospital.model.Doctor;
-import com.hospital.service.HospitalService;
+import hospital.model.Doctor;
+import hospital.service.HospitalService;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -43,7 +43,7 @@ public class DoctorPanel extends JPanel {
         card.setLayout(new BorderLayout(14, 14));
 
         // Top Filter & Action Bar
-        JPanel toolBar = new JPanel(new BorderLayout());
+        JPanel toolBar = new JPanel(new BorderLayout(0, 10));
         toolBar.setOpaque(false);
 
         JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
@@ -69,8 +69,8 @@ public class DoctorPanel extends JPanel {
         JButton btnAddDoctor = UIConstants.createPrimaryButton("+ Add New Specialist");
         btnAddDoctor.addActionListener(e -> showAddDoctorDialog());
 
-        toolBar.add(filterPanel, BorderLayout.WEST);
-        toolBar.add(btnAddDoctor, BorderLayout.EAST);
+        toolBar.add(filterPanel, BorderLayout.NORTH);
+        toolBar.add(btnAddDoctor, BorderLayout.CENTER);
         card.add(toolBar, BorderLayout.NORTH);
 
         // Doctor Table

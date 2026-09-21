@@ -1,4 +1,4 @@
-package com.hospital.ui;
+package hospital.ui;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

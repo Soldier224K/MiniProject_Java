@@ -14,7 +14,7 @@ echo "=========================================="
 "$PROJECT_ROOT/compile.sh"
 
 # Create Manifest
-echo "Main-Class: com.hospital.Main" > "$PROJECT_ROOT/manifest.txt"
+echo "Main-Class: hospital.Main" > "$PROJECT_ROOT/manifest.txt"
 
 # Build JAR
 jar cfm "$PROJECT_ROOT/$JAR_NAME" "$PROJECT_ROOT/manifest.txt" -C "$BIN_DIR" .

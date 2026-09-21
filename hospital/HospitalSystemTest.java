@@ -1,7 +1,7 @@
-package com.hospital;
+package hospital;
 
-import com.hospital.model.*;
-import com.hospital.service.HospitalService;
+import hospital.model.*;
+import hospital.service.HospitalService;
 
 import java.time.LocalDate;
 import java.util.LinkedList;

@@ -1,11 +1,8 @@
-package com.hospital.model;
+package hospital.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-/**
- * Model class representing an Appointment entity in the Hospital System.
- */
 public class Appointment {
     private String appointmentId;
     private String patientId;
@@ -18,8 +15,8 @@ public class Appointment {
     private String status; // "Scheduled", "Completed", "Cancelled", "In Progress"
 
     public Appointment(String appointmentId, String patientId, String patientName,
-                       String doctorId, String doctorName, LocalDate appointmentDate,
-                       String timeSlot, String reason, String status) {
+            String doctorId, String doctorName, LocalDate appointmentDate,
+            String timeSlot, String reason, String status) {
         this.appointmentId = appointmentId;
         this.patientId = patientId;
         this.patientName = patientName;
@@ -105,8 +102,10 @@ public class Appointment {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Appointment that = (Appointment) o;
         return Objects.equals(appointmentId, that.appointmentId);
     }
@@ -118,6 +117,7 @@ public class Appointment {
 
     @Override
     public String toString() {
-        return appointmentId + ": " + patientName + " with " + doctorName + " on " + appointmentDate + " (" + timeSlot + ") - [" + status + "]";
+        return appointmentId + ": " + patientName + " with " + doctorName + " on " + appointmentDate + " (" + timeSlot
+                + ") - [" + status + "]";
     }
 }

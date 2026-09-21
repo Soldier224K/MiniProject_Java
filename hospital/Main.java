@@ -1,6 +1,6 @@
-package com.hospital;
+package hospital;
 
-import com.hospital.ui.MainFrame;
+import hospital.ui.MainFrame;
 
 import javax.swing.*;
 

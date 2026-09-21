@@ -1,8 +1,8 @@
-package com.hospital.ui;
+package hospital.ui;
 
-import com.hospital.model.Appointment;
-import com.hospital.model.Patient;
-import com.hospital.service.HospitalService;
+import hospital.model.Appointment;
+import hospital.model.Patient;
+import hospital.service.HospitalService;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

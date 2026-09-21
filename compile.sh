@@ -5,7 +5,7 @@ set -e
 
 PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
 BIN_DIR="$PROJECT_ROOT/bin"
-SRC_DIR="$PROJECT_ROOT/src"
+SRC_DIR="$PROJECT_ROOT/hospital"
 
 echo "=========================================="
 echo " Building Hospital Patient Management App "

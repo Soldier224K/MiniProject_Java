@@ -1,9 +1,9 @@
-package com.hospital.ui;
+package hospital.ui;
 
-import com.hospital.model.Appointment;
-import com.hospital.model.Doctor;
-import com.hospital.model.Patient;
-import com.hospital.service.HospitalService;
+import hospital.model.Appointment;
+import hospital.model.Doctor;
+import hospital.model.Patient;
+import hospital.service.HospitalService;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -112,7 +112,7 @@ public class AppointmentPanel extends JPanel {
         rightCard.setLayout(new BorderLayout(12, 12));
 
         // Filter and Action Bar
-        JPanel toolBar = new JPanel(new BorderLayout());
+        JPanel toolBar = new JPanel(new BorderLayout(0, 10));
         toolBar.setOpaque(false);
 
         JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
@@ -146,8 +146,8 @@ public class AppointmentPanel extends JPanel {
         actionBtns.add(btnCancel);
         actionBtns.add(btnRefresh);
 
-        toolBar.add(filterPanel, BorderLayout.WEST);
-        toolBar.add(actionBtns, BorderLayout.EAST);
+        toolBar.add(filterPanel, BorderLayout.NORTH);
+        toolBar.add(actionBtns, BorderLayout.CENTER);
         rightCard.add(toolBar, BorderLayout.NORTH);
 
         // Table

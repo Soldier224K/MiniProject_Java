@@ -1,4 +1,4 @@
-package com.hospital.model;
+package hospital.model;
 
 import java.time.LocalDate;
 import java.util.Objects;

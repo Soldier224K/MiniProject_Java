@@ -1,6 +1,6 @@
-package com.hospital.service;
+package hospital.service;
 
-import com.hospital.model.*;
+import hospital.model.*;
 
 import java.time.LocalDate;
 import java.util.*;

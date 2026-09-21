@@ -12,4 +12,4 @@ echo "=========================================="
 echo " Running Automated Unit & DSA Tests       "
 echo "=========================================="
 
-java -enableassertions -cp "$BIN_DIR" com.hospital.HospitalSystemTest
+java -enableassertions -cp "$BIN_DIR" hospital.HospitalSystemTest

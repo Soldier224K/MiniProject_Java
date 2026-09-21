@@ -1,9 +1,9 @@
-package com.hospital.ui;
+package hospital.ui;
 
-import com.hospital.model.Appointment;
-import com.hospital.model.MedicalRecord;
-import com.hospital.model.Patient;
-import com.hospital.service.HospitalService;
+import hospital.model.Appointment;
+import hospital.model.MedicalRecord;
+import hospital.model.Patient;
+import hospital.service.HospitalService;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -153,7 +153,7 @@ public class PatientPanel extends JPanel {
         rightCard.setLayout(new BorderLayout(12, 12));
 
         // Search and action header
-        JPanel searchBar = new JPanel(new BorderLayout(10, 0));
+        JPanel searchBar = new JPanel(new BorderLayout(10, 10));
         searchBar.setOpaque(false);
 
         JPanel searchInputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
@@ -193,8 +193,8 @@ public class PatientPanel extends JPanel {
         tableActions.add(btnViewDetails);
         tableActions.add(btnDelete);
 
-        searchBar.add(searchInputPanel, BorderLayout.WEST);
-        searchBar.add(tableActions, BorderLayout.EAST);
+        searchBar.add(searchInputPanel, BorderLayout.NORTH);
+        searchBar.add(tableActions, BorderLayout.CENTER);
         rightCard.add(searchBar, BorderLayout.NORTH);
 
         // Table

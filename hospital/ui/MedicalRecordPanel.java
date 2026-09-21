@@ -1,9 +1,9 @@
-package com.hospital.ui;
+package hospital.ui;
 
-import com.hospital.model.Doctor;
-import com.hospital.model.MedicalRecord;
-import com.hospital.model.Patient;
-import com.hospital.service.HospitalService;
+import hospital.model.Doctor;
+import hospital.model.MedicalRecord;
+import hospital.model.Patient;
+import hospital.service.HospitalService;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -118,7 +118,7 @@ public class MedicalRecordPanel extends JPanel {
         rightCard.setLayout(new BorderLayout(12, 12));
 
         // Filter Bar
-        JPanel toolBar = new JPanel(new BorderLayout());
+        JPanel toolBar = new JPanel(new BorderLayout(0, 10));
         toolBar.setOpaque(false);
 
         JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
@@ -149,8 +149,8 @@ public class MedicalRecordPanel extends JPanel {
         JButton btnViewRecord = UIConstants.createButton("View Full Prescription", UIConstants.PURPLE, Color.WHITE);
         btnViewRecord.addActionListener(e -> viewSelectedRecordDetails());
 
-        toolBar.add(filterPanel, BorderLayout.WEST);
-        toolBar.add(btnViewRecord, BorderLayout.EAST);
+        toolBar.add(filterPanel, BorderLayout.NORTH);
+        toolBar.add(btnViewRecord, BorderLayout.CENTER);
         rightCard.add(toolBar, BorderLayout.NORTH);
 
         // Table
